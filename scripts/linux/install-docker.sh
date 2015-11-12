@@ -20,3 +20,12 @@ if [ ! "$haveDocker" ]; then
   # Install docker
   wget -qO- https://get.docker.com/ | sudo sh
 fi
+
+set +e
+haveDockerNet=$(sudo docker network ls | grep "mupnet")
+set -e
+
+if [ ! "$haveDockerNet" ]; then
+  # Create a docker network
+  sudo docker network create --driver=bridge mupnet
+fi

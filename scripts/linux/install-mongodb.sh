@@ -16,5 +16,6 @@ sudo docker run \
   --publish=127.0.0.1:27017:27017 \
   --volume=/var/lib/mongodb:/data/db \
   --volume=/opt/mongodb/mongodb.conf:/mongodb.conf \
+  --net=mupnet \
   --name=mongodb \
   mongo mongod -f /mongodb.conf
